@@ -13,29 +13,29 @@ data "vsphere_datacenter" "dc" {
 
 data "vsphere_datastore" "datastore" {
   name          = "vsanDatastore"
-  datacenter_id = "${data.vsphere_datacenter.dc.id}"
+  datacenter_id = "data.vsphere_datacenter.dc.id"
 }
 
 data "vsphere_resource_pool" "pool" {
   name          = "Anthos-QA"
-  datacenter_id = "${data.vsphere_datacenter.dc.id}"
+  datacenter_id = "data.vsphere_datacenter.dc.id"
 }
 
 data "vsphere_network" "network" {
   name          = "ANTHOS-VM-MANAGEMENT-PG"
-  datacenter_id = "${data.vsphere_datacenter.dc.id}"
+  datacenter_id = "data.vsphere_datacenter.dc.id"
 }
 
 #Data source for VM template
 data "vsphere_virtual_machine" "template" {
    name = "anthos-qa-jumpbox"
-   datacenter_id = "${data.vsphere_datacenter.dc.id}"
+   datacenter_id = "data.vsphere_datacenter.dc.id"
 }
 
 resource "vsphere_virtual_machine" "vm" {
 name             = "jumpbox-12jan"
-resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
-datastore_id     = "${data.vsphere_datastore.datastore.id}"
+resource_pool_id = "data.vsphere_resource_pool.pool.id"
+datastore_id     = "data.vsphere_datastore.datastore.id"
 wait_for_guest_net_timeout = 0
 wait_for_guest_ip_timeout  = 0
 num_cpus = 2
