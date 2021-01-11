@@ -1,7 +1,7 @@
 provider "vsphere" {
-  user           = var.vsphere_user
-  password       = var.vsphere_password
-  vsphere_server = var.vsphere_server
+  user           = "administrator@vsphere.local"
+  password       = "Fri@co123!"
+  vsphere_server = "uslabpowvcs01.hclcnlabs.com"
 
   # If you have a self-signed cert
   allow_unverified_ssl = true
@@ -33,7 +33,7 @@ data "vsphere_virtual_machine" "template" {
 }
 
 resource "vsphere_virtual_machine" "vm" {
-name             = var.servername
+name             = "jumpbox-12jan"
 resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
 datastore_id     = "${data.vsphere_datastore.datastore.id}"
 wait_for_guest_net_timeout = 0
@@ -57,7 +57,7 @@ guest_id = "${data.vsphere_virtual_machine.template.guest_id}"
 
     customize {
       linux_options{
-        host_name = var.servername
+        host_name = "jumpbox-12jan"
         domain = "hclcnlabs.com"
       }
       network_interface {
