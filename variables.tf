@@ -13,10 +13,6 @@ variable "vsphere_password" {
     description = "vsphere server password for the environment"
     default = "Fri@co123!"
 }
-variable "password" {
-    description = "Root account password"
-    default = "redhat"
-}
 variable "JumpboxName" {
     description = "Server Name"
     default = "jumpbox"
