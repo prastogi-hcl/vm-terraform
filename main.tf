@@ -1,6 +1,6 @@
 provider "vsphere" {
   user           = var.vsphere_user
-  password       = "Fri@co123!"
+  password       = Fri@co123!
   vsphere_server = var.vsphere_server
 
   # If you have a self-signed cert
