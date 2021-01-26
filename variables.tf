@@ -8,14 +8,18 @@ variable "vsphere_user" {
 }
 variable "ipv4_address" {
     description = "vsphere server ipv4 address - EXAMPLE: 172.16.135.60"
+    default = "172.16.135.30"
 }
 
 variable "vsphere_password" {
     description = "vsphere server password for the environment"
+    default = "Fri@co123!"
 }
 variable "password" {
     description = "Root account password"
+    default = "redhat"
 }
 variable "servername" {
     description = "Server Name"
+    default = "jumpbox"
 }
