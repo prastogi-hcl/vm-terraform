@@ -20,5 +20,5 @@ variable "password" {
 }
 variable "servername" {
     description = "Server Name"
-    default = "jumpbox"
+    default = "jumpbox-26Jan"
 }
