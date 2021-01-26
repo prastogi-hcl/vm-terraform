@@ -61,7 +61,7 @@ guest_id = data.vsphere_virtual_machine.template.guest_id
         domain = "hclcnlabs.com"
       }
       network_interface {
-        ipv4_address = "var.ipv4_address""
+        ipv4_address = "var.ipv4_address"
         ipv4_netmask = "24"
       }
 
