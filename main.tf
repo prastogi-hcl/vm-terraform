@@ -2,7 +2,7 @@
 provider "vsphere" {
   user           = "administrator@vsphere.local"
   password       = "Fri@co123!"
-  vsphere_server = "var.vsphere_server"
+  vsphere_server = "uslabpowvcs01.hclcnlabs.com"
 
   # If you have a self-signed cert
   allow_unverified_ssl = true
