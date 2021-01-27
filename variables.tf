@@ -1,6 +1,6 @@
 variable "vsphere_server" {
     description = "vsphere server for the environment - EXAMPLE: vcenter01.hosted.local"
-    default = "uslabpowvcs02.hclcnlabs.com"
+    default = "uslabpowvcs01.hclcnlabs.com"
 }
 variable "vsphere_user" {
     description = "vsphere server for the environment - EXAMPLE: vsphereuser"
