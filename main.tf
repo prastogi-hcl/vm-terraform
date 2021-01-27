@@ -34,7 +34,7 @@ data "vsphere_virtual_machine" "template" {
 }
 
 resource "vsphere_virtual_machine" "vm" {
-name             = var.servername
+name             = var.JumpboxName
 resource_pool_id = data.vsphere_resource_pool.pool.id
 datastore_id     = data.vsphere_datastore.datastore.id
 wait_for_guest_net_timeout = 0
@@ -58,11 +58,11 @@ guest_id = data.vsphere_virtual_machine.template.guest_id
 
     customize {
       linux_options{
-        host_name = var.servername
+        host_name = var.JumpboxName
         domain = "hclcnlabs.com"
       }
       network_interface {
-        ipv4_address = var.ipv4_address
+        ipv4_address = var.JumpboxIP
         ipv4_netmask = "24"
       }
 
