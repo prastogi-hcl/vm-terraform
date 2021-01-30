@@ -1,0 +1,42 @@
+gcp:
+  # Path of the whitelisted service account's JSON key file
+  whitelistedServiceAccountKeyPath: "/root/anthos-pre-service-account.json"
+# Specify which vCenter resources to use
+vCenter:
+  # The credentials and address GKE On-Prem should use to connect to vCenter
+  credentials:
+    address: "uslabpowvcs01.hclcnlabs.com"
+    username: "administrator@vsphere.local"
+    password: "Fri@co123!"
+  datacenter: "FRISCO-DC"
+  datastore: "vsanDatastore"
+  cluster: "Anthos-vSAN-Cluster"
+  network: "ANTHOS-VM-MANAGEMENT-PG"
+  resourcePool: "Anthos-QA"
+  # Provide the path to vCenter CA certificate pub key for SSL verification
+  caCertPath: "/root/certs/lin/root.cert"
+# The URL of the proxy for the jump host
+proxyUrl: ""
+adminWorkstation:
+  name: gke-admin-ws-201028-0723456
+  cpus: 4
+  memoryMB: 8192
+  # The boot disk size of the admin workstation in GB. It is recommended to use a
+  # disk with at least 50 GB to host images decompressed from the bundle.
+  diskGB: 50
+  # Name for the persistent disk to be mounted to the home directory (ending in .vmdk).
+  # Any directory in the supplied path must be created before deployment.
+  dataDiskName: gke-on-prem-admin-workstation-data-disk/gke-admin-ws-201028-0723456-data-disk.vmdk
+  # The size of the data disk in MB.
+  dataDiskMB: 512
+  network:
+    ipAllocationMode: "static"
+    hostConfig:
+        ip: "172.16.135.9"
+        gateway: "172.16.135.1"
+        netmask: "255.255.255.0"
+        dns:
+        - "8.8.8.8"
+  # The URL of the proxy for the admin workstation
+  proxyUrl: ""
+  ntpServer: ntp.ubuntu.com
