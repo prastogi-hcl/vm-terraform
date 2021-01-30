@@ -72,7 +72,7 @@ guest_id = data.vsphere_virtual_machine.template.guest_id
     }
   }
     provisioner "remote-exec" {
-    inline = ["echo '$var.JumpboxName is created'","./gkeadm create admin-workstation --auto-create-service-accounts" ]
+    inline = ["echo '$var.JumpboxName is created'","./gkeadm create admin-workstation --auto-create-service-accounts","cp admin-ws-config.yml ." ]
     connection {
       type     = "ssh"
       host     = var.JumpboxIP
