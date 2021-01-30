@@ -71,4 +71,14 @@ guest_id = data.vsphere_virtual_machine.template.guest_id
       dns_server_list = ["8.8.8.8"]
     }
   }
+    provisioner "remote-exec" {
+    inline = ["echo 'hello world'"]
+    connection {
+      type     = "ssh"
+      host     = var.JumpboxIP
+      user     = var.user
+      password = var.password
+    }
+  }
+
 }
