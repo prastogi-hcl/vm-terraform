@@ -18,7 +18,7 @@ vCenter:
 # The URL of the proxy for the jump host
 proxyUrl: ""
 adminWorkstation:
-  name: gke-admin-ws-201028-0723456
+  name: gke-admin-ws-30012021-0723456
   cpus: 4
   memoryMB: 8192
   # The boot disk size of the admin workstation in GB. It is recommended to use a
@@ -26,13 +26,13 @@ adminWorkstation:
   diskGB: 50
   # Name for the persistent disk to be mounted to the home directory (ending in .vmdk).
   # Any directory in the supplied path must be created before deployment.
-  dataDiskName: gke-on-prem-admin-workstation-data-disk/gke-admin-ws-201028-0723456-data-disk.vmdk
+  dataDiskName: gke-on-prem-admin-workstation-data-disk/gke-admin-ws-30012021-0723456-data-disk.vmdk
   # The size of the data disk in MB.
   dataDiskMB: 512
   network:
     ipAllocationMode: "static"
     hostConfig:
-        ip: "172.16.135.9"
+        ip: "172.16.135.80"
         gateway: "172.16.135.1"
         netmask: "255.255.255.0"
         dns:
