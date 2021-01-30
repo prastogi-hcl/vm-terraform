@@ -18,3 +18,11 @@ variable "JumpboxName" {
     description = "Server Name"
     default = "jumpbox-27"
 }
+variable "user" {
+    description = "Jumpbox User"
+    default = "root"
+}
+variable "password" {
+    description = "Jumpbox Password"
+    default = "redhat"
+}
