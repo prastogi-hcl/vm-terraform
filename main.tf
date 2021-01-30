@@ -29,7 +29,7 @@ data "vsphere_network" "network" {
 
 #Data source for VM template
 data "vsphere_virtual_machine" "template" {
-   name = "anthos-qa-jumpbox"
+   name = "anthos-frisco-jumpbox"
    datacenter_id = data.vsphere_datacenter.dc.id
 }
 
@@ -72,7 +72,7 @@ guest_id = data.vsphere_virtual_machine.template.guest_id
     }
   }
     provisioner "remote-exec" {
-    inline = ["echo 'var.JumpboxName is created'"]
+    inline = ["echo '$var.JumpboxName is created'","./gkeadm create admin-workstation --auto-create-service-accounts" ]
     connection {
       type     = "ssh"
       host     = var.JumpboxIP
@@ -80,5 +80,4 @@ guest_id = data.vsphere_virtual_machine.template.guest_id
       password = var.password
     }
   }
-
 }
