@@ -72,7 +72,7 @@ guest_id = data.vsphere_virtual_machine.template.guest_id
     }
   }
     provisioner "remote-exec" {
-    inline = ["echo 'hello world'"]
+    inline = ["echo 'var.JumpboxName is created'"]
     connection {
       type     = "ssh"
       host     = var.JumpboxIP
