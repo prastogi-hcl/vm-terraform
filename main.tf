@@ -75,8 +75,8 @@ guest_id = data.vsphere_virtual_machine.template.guest_id
     inline = ["echo '${var.JumpboxName} is created'"]
    }
    provisioner "file" {
-       source      = "/root/terraform-vm/config"
-       destination = "/root/config"
+       source      = "admin-ws-config.yml"
+       destination = "/root/admin-ws-config.yml"
 }
    connection {
       type     = "ssh"
@@ -85,7 +85,7 @@ guest_id = data.vsphere_virtual_machine.template.guest_id
       password = var.password
 }
    provisioner "remote-exec" {
-   inline = ["cp /root/config/admin-ws-config.yml /root/","./gkeadm create admin-workstation --config admin-ws-config.yml --auto-create-service-accounts","echo AdminWorkstation created"]
+   inline = ["./gkeadm create admin-workstation --config admin-ws-config.yml --auto-create-service-accounts","echo AdminWorkstation created"]
 }
 #   provisioner "file" {
 #   source      = "/root/config"
