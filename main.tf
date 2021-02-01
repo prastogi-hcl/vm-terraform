@@ -18,7 +18,7 @@ data "vsphere_datastore" "datastore" {
 }
 
 data "vsphere_resource_pool" "pool" {
-  name          = "Anthos-QA"
+  name          = "Anthos-WAWA"
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
@@ -70,14 +70,31 @@ guest_id = data.vsphere_virtual_machine.template.guest_id
       dns_suffix_list = ["hclcnlabs.com"]
       dns_server_list = ["8.8.8.8"]
     }
-  }
+}
     provisioner "remote-exec" {
-    inline = ["echo '$var.JumpboxName is created'","cp admin-ws-config.yml .","./gkeadm create admin-workstation --auto-create-service-accounts"]
-    connection {
+    inline = ["echo '${var.JumpboxName} is created'"]
+   }
+   provisioner "file" {
+       source      = "/root/terraform-vm/config"
+       destination = "/root/config"
+}
+   connection {
       type     = "ssh"
       host     = var.JumpboxIP
       user     = var.user
       password = var.password
-    }
-  }
+}
+   provisioner "remote-exec" {
+   inline = ["cp /root/config/admin-ws-config.yml /root/","./gkeadm create admin-workstation --config admin-ws-config.yml --auto-create-service-accounts","echo AdminWorkstation created"]
+}
+#   provisioner "file" {
+#   source      = "/root/config"
+#   destination = "/home/ubuntu/config"
+#   connection {
+#    type     = "ssh"
+#    host     = var.admin_ws_ip
+#    user     = "ubuntu"
+#    private_key = file(/root/aks.pem)
+#}
+#}
 }
