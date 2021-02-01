@@ -26,3 +26,7 @@ variable "password" {
     description = "Jumpbox Password"
     default = "redhat"
 }
+variable "admin_ws_ip" {
+    description = "Admin Workstation IP"
+    default = "172.16.135.80"
+}
